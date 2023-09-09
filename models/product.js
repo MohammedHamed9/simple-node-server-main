@@ -29,7 +29,6 @@ const productModel=sequelize.define('product',{
 productModel.associate=function(models){
     productModel.hasOne(models.order)
 }
-/*
-productModel.belongsToMany(order,{through:order_product})*/
-console.log('am herrrreeeeee')
+
+productModel.belongsToMany(order,{through:order_product})
 module.exports=productModel
