@@ -12,7 +12,13 @@ module.exports = {
     },
     cust_id: {
       type: Sequelize.INTEGER,
-      allowNull: false
+      allowNull: false,
+      references:{
+        model:'customer',
+        key:'cust_id'
+      },
+      onUpdate:"CASCADE",
+      onDelete:"CASCADE"
     },
       invoice_creation_data:{
             type:Sequelize.DATE,

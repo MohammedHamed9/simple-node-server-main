@@ -1,9 +1,12 @@
 const { DataTypes } = require('sequelize');
 const sequelize=require('../src/database');
 const customer=require('./customer');
+const product=require('./product');
+const order_product=require('./order_product');
+
 const orderModel=sequelize.define('order',{
   order_id:{
-    type:DataTypes.INTEGER,
+    type:DataTypes.INTEGER, 
     autoIncrement:true,
     allowNull:false,
     primaryKey:true
@@ -35,4 +38,8 @@ const orderModel=sequelize.define('order',{
   tableName:'order',
   timestamps:false
 });
+
+orderModel.belongsTo(customer,{onDelete:'CASCADE',onUpdate:'CASCADE'});
+orderModel.belongsToMany(product,{through:order_product})
+
 module.exports=orderModel

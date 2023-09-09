@@ -1,7 +1,7 @@
 // src/models/User.js
 const { DataTypes } = require('sequelize');
 const sequelize = require('../src/database');
-
+const order=require('../models/order');
 const customerModel = sequelize.define('customer', {
   cust_id:{
       allowNull: false,
@@ -40,5 +40,7 @@ const customerModel = sequelize.define('customer', {
   tableName: "customer",
   timestamps: false
 });
+
+customerModel.hasMany(order,{onDelete:'CASCADE',onUpdate:'CASCADE'})
 
 module.exports = customerModel;

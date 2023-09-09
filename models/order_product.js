@@ -1,7 +1,7 @@
 const {DataTypes}=require('sequelize');
 const sequelize=require('../src/database');
 const order=require('./order');
-const prodcut=require('./product');
+const product=require('./product');
 const order_product=sequelize.define('order_product',{
   order_product_id:{
     type:DataTypes.INTEGER,
@@ -21,7 +21,7 @@ const order_product=sequelize.define('order_product',{
     type:DataTypes.INTEGER,
     allowNull:false,
     references:{
-      model:prodcut,
+      model:product,
       key:'product_id'
     }
   },
@@ -34,4 +34,5 @@ const order_product=sequelize.define('order_product',{
   timestamps:false
 }
 )
+
 module.exports=order_product;
